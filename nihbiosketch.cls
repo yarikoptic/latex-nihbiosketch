@@ -29,14 +29,21 @@
 
 \RequirePackage{etoolbox}
 \RequirePackage[letterpaper]{geometry}
-\RequirePackage{ifxetex, ifluatex}   % requires fontspec, so either XeTeX or LuaTeX
-\RequirePackage{fontspec}
-\setmainfont[Ligatures=TeX]{Arial}
+% \RequirePackage{ifxetex, ifluatex}   % requires fontspec, so either XeTeX or LuaTeX
+% \RequirePackage{fontspec}
+% \setmainfont[Ligatures=TeX]{Arial}
+
+% Do not bother with fancy non-pdftex, should be sufficient to be sans-serif
+\usepackage{helvet}
+\renewcommand*{\familydefault}{\sfdefault}%the whole document will be sans serif
+\usepackage{amsfonts}
+
 \RequirePackage{microtype}
 
 \RequirePackage{tabu}
 \RequirePackage{ifthen}
-\RequirePackage{ulem}
+% yoh: do not underline emphasis
+% \RequirePackage{ulem}
 
 \RequirePackage{enumitem}
 \setlist[enumerate,2]{label=\alph*.,itemsep=0pt,parsep=1pt,partopsep=1pt}
@@ -45,14 +52,19 @@
 \RequirePackage{titlesec}
 \renewcommand{\thesection}{\Alph{section}.}
 \titleformat{\section}[hang]{\normalfont\bfseries}{\thesection}{0.5em}{}  % section style
-\titleformat{\subsection}[hang]{\normalfont\bfseries}{\thesubsection}{0.5em}{\uline}  % subsection style
+\titleformat{\subsection}[hang]{\normalfont\bfseries}{\thesubsection}{0.5em}{}  % subsection style
 \titleformat{\subsubsection}[hang]{\itshape}{\thesubsubsection}{0.5em}{}  % subsubsection style
 
 \titlespacing{\section}{0pt}{2ex}{1ex}
 \titlespacing{\subsection}{0pt}{1.25ex}{0.5ex}
 \titlespacing{\subsubsection}{0pt}{1.25ex}{0.5ex}
 
-\PassOptionsToPackage{urlcolor=blue,colorlinks=true,breaklinks=true}{hyperref}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0.08,0.35}
+\definecolor{darkgreen}{rgb}{0,0.35,0.08}
+\definecolor{webgreen}{rgb}{0.0,0.2,0.0}
+
+\PassOptionsToPackage{backref=false,citecolor=darkblue,urlcolor=darkblue,colorlinks=true,breaklinks=true}{hyperref}
 \RequirePackage{hyperref}
 \urlstyle{same}
 
@@ -68,21 +80,27 @@
 \newcommand{\position}[1]{\renewcommand{\@position}{#1}}
 
 \newcommand{\pgline}{\noindent\makebox[\linewidth]{\rule{\textwidth}{0.5pt}}\newline}
-
+\newcommand{\pgspace}{\noindent\vspace{0.5em}}
 \newcommand{\piinfo}
-{\pgline
+{
+\begin{flushright}
+ \tiny
+  OMB No. 0925-0001 and 0925-0002 (Rev. 09/17 Approved Through 03/31/2020)\vspace{-2em}
+\end{flushright}
+\pgline
 {\centering
 \textbf{BIOGRAPHICAL SKETCH}\\
 {\footnotesize
 Provide the following information for the Senior/key personnel and other significant contributors.\\
 Follow this format for each person.  \textbf{DO NOT EXCEED FIVE PAGES}.\\}}
 \pgline
+\pgspace
 NAME: \@name\\
-\pgline
+\pgspace
 eRA COMMONS USER NAME (credential, e.g., agency login): \@eracommons\\
-\pgline
+\pgspace
 POSITION TITLE: \@position\\
-\pgline
+\pgspace
 EDUCATION/TRAINING (\textit{Begin with baccalaureate or other initial professional education, such as nursing, include postdoctoral training and residency training if applicable. Add/delete rows as necessary.})\\}
 
 \newcommand{\grantinfo}[6]
@@ -95,7 +113,7 @@ EDUCATION/TRAINING (\textit{Begin with baccalaureate or other initial profession
 {%
 \bgroup\centering
 \tabulinesep=1.5mm
-\begin{tabu} to \textwidth {X[3.73,l,m]|X[1,c,m]|X[1,c,m]|X[1.8,l,m]}
+\begin{tabu} to \textwidth {X[3.33,l,m]|X[1,c,m]|X[0.8,c,m]|X[1.8,l,m]}
 \hline
 \rowfont[c]{}               % for the header only we want all the text centered
 INSTITUTION AND LOCATION & 

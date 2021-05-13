@@ -64,7 +64,14 @@
 \definecolor{darkgreen}{rgb}{0,0.35,0.08}
 \definecolor{webgreen}{rgb}{0.0,0.2,0.0}
 
-\PassOptionsToPackage{backref=false,citecolor=darkblue,urlcolor=darkblue,colorlinks=true,breaklinks=true}{hyperref}
+\PassOptionsToPackage{
+  hidelinks=true,
+  backref=false,
+  citecolor=darkblue,
+  urlcolor=darkblue,
+%  colorlinks=true,
+%  breaklinks=true
+}{hyperref}
 \RequirePackage{hyperref}
 \urlstyle{same}
 
@@ -84,8 +91,9 @@
 \newcommand{\piinfo}
 {
 \begin{flushright}
- \tiny
-  OMB No. 0925-0001 and 0925-0002 (Rev. 09/17 Approved Through 03/31/2020)\vspace{-2em}
+ \small
+  % OMB No. 0925-0001 and 0925-0002 (Rev. 09/17 Approved Through  03/31/2020)
+  OMB No. 0925-0001 and 0925-0002 (Rev. 03/2020 Approved Through 02/28/2023)\vspace{-2em}
 \end{flushright}
 \pgline
 {\centering

@@ -17,7 +17,7 @@
 
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{nihbiosketch}[2015/04/22 NIH Biosketch Class]
+\ProvidesClass{nihbiosketch}[2021/06/02 NIH Biosketch Class]
 
 %------------------------------------------------------------------------------
 
@@ -93,7 +93,7 @@
 \begin{flushright}
  \small
   % OMB No. 0925-0001 and 0925-0002 (Rev. 09/17 Approved Through  03/31/2020)
-  OMB No. 0925-0001 and 0925-0002 (Rev. 03/2020 Approved Through 02/28/2023)\vspace{-2em}
+  OMB No. 0925-0001 and 0925-0002 (Rev. 03/2020 Approved Through 02/28/2023)\vspace{0em}
 \end{flushright}
 \pgline
 {\centering

@@ -1,4 +1,4 @@
-%% nihbiosketch.cls 
+%% nihbiosketch.cls
 %% Copyright 2015 Paul M. Magwene
 %
 % This work may be distributed and/or modified under the
@@ -10,7 +10,7 @@
 % version 008/05/04 or later.
 %
 % This work has the LPPL maintenance status `maintained'.
-% 
+%
 % The Current Maintainer of this work is Paul M. Magwene
 %
 % This work consists of the files nihbiosketch.cls
@@ -41,22 +41,31 @@
 \RequirePackage{microtype}
 
 \RequirePackage{tabu}
+\RequirePackage{longtable}
 \RequirePackage{ifthen}
 % yoh: do not underline emphasis
-% \RequirePackage{ulem}
+% \RequirePackage[normalem]{ulem}
 
 \RequirePackage{enumitem}
 \setlist[enumerate,2]{label=\alph*.,itemsep=0pt,parsep=1pt,partopsep=1pt}
 
 
-\RequirePackage{titlesec}
+\RequirePackage[largestsep]{titlesec}
+% NIH examples use this larger size for some headers
+%\newcommand{\headersize}{\fontsize{13.5pt}{13.5pt}\selectfont}
 \renewcommand{\thesection}{\Alph{section}.}
-\titleformat{\section}[hang]{\normalfont\bfseries}{\thesection}{0.5em}{}  % section style
-\titleformat{\subsection}[hang]{\normalfont\bfseries}{\thesubsection}{0.5em}{}  % subsection style
-\titleformat{\subsubsection}[hang]{\itshape}{\thesubsubsection}{0.5em}{}  % subsubsection style
+% yoh had these customizations without [largestep]
+% \titleformat{\section}[hang]{\normalfont\bfseries}{\thesection}{0.5em}{}  % section style
+% \titleformat{\subsection}[hang]{\normalfont\bfseries}{\thesubsection}{0.5em}{}  % subsection style
+% \titleformat{\subsubsection}[hang]{\itshape}{\thesubsubsection}{0.5em}{}  % subsubsection style
 
-\titlespacing{\section}{0pt}{2ex}{1ex}
-\titlespacing{\subsection}{0pt}{1.25ex}{0.5ex}
+\renewcommand{\thesection}{\Alph{section}.}
+\titleformat{\section}[hang]{\normalfont\bfseries}{\thesection}{0.5em}{}
+\titleformat{\subsection}[hang]{\normalfont\bfseries}{\thesubsection}{0.5em}{\uline}
+\titleformat{\subsubsection}[hang]{\normalfont}{\thesubsubsection}{0.5em}{\uline}
+
+\titlespacing{\section}{0pt}{11pt}{1.5pt}
+\titlespacing{\subsection}{0pt}{11pt}{1.5pt}
 \titlespacing{\subsubsection}{0pt}{1.25ex}{0.5ex}
 
 \usepackage[usenames,dvipsnames]{color}
@@ -118,12 +127,11 @@ EDUCATION/TRAINING (\textit{Begin with baccalaureate or other initial profession
 \newline{#4}\newline{#5}\newline{#6}}
 
 \newenvironment{education}
-{%
-\bgroup\centering
+{\bgroup\centering
 \tabulinesep=1.5mm
 \begin{tabu} to \textwidth {X[3.33,l,m]|X[1,c,m]|X[0.8,c,m]|X[1.8,l,m]}
 \hline
-\rowfont[c]{}               % for the header only we want all the text centered
+\rowfont[c]{}               
 INSTITUTION AND LOCATION & 
 DEGREE \newline (\textit{if applicable}) & 
 Completion Date MM/YYYY & 
@@ -136,13 +144,30 @@ FIELD OF STUDY\\
 \begin{tabu} to 7.5in{X[1,l]X[6.5,l,p]}}
 {\end{tabu}}
 
+\newenvironment{datelngtbl}
+{\tabulinesep=0mm\vspace{-2ex} % should not be necessary
+\begin{longtabu} to 7.5in{X[1,l]X[6.5,l,p]}}
+{\end{longtabu}}
+
 \newenvironment{statement}
 {\setlength\parindent{2em}}
 {\setlength\parindent{0pt}}
 
+\newenvironment{performance}
+{\bgroup\centering
+\tabulinesep=0mm
+\begin{longtabu} to \textwidth {X[1,c,m]X[5.249,l,m]X[1,c,m]}
+\hline
+\rowfont[c]{}
+YEAR &
+COURSE TITLE &
+GRADE \\
+\hline}
+{\end{longtabu}\egroup}
+
 
 %------------------------------------------------------------------------------
-% setup document geometry    
+% setup document geometry
 
 % turn off page numbering
 \pagenumbering{gobble}
@@ -155,4 +180,3 @@ FIELD OF STUDY\\
 %------------------------------------------------------------------------------
 
 \AfterEndPreamble{\piinfo}
-

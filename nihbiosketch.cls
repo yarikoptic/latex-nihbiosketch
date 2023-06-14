@@ -43,8 +43,7 @@
 \RequirePackage{tabu}
 \RequirePackage{longtable}
 \RequirePackage{ifthen}
-% yoh: do not underline emphasis
-% \RequirePackage[normalem]{ulem}
+\RequirePackage[normalem]{ulem}
 
 \RequirePackage{enumitem}
 \setlist[enumerate,2]{label=\alph*.,itemsep=0pt,parsep=1pt,partopsep=1pt}
@@ -53,12 +52,6 @@
 \RequirePackage[largestsep]{titlesec}
 % NIH examples use this larger size for some headers
 %\newcommand{\headersize}{\fontsize{13.5pt}{13.5pt}\selectfont}
-\renewcommand{\thesection}{\Alph{section}.}
-% yoh had these customizations without [largestep]
-% \titleformat{\section}[hang]{\normalfont\bfseries}{\thesection}{0.5em}{}  % section style
-% \titleformat{\subsection}[hang]{\normalfont\bfseries}{\thesubsection}{0.5em}{}  % subsection style
-% \titleformat{\subsubsection}[hang]{\itshape}{\thesubsubsection}{0.5em}{}  % subsubsection style
-
 \renewcommand{\thesection}{\Alph{section}.}
 \titleformat{\section}[hang]{\normalfont\bfseries}{\thesection}{0.5em}{}
 \titleformat{\subsection}[hang]{\normalfont\bfseries}{\thesubsection}{0.5em}{\uline}

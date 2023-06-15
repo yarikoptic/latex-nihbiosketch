@@ -88,29 +88,32 @@
 \newcommand{\eracommons}[1]{\renewcommand{\@eracommons}{#1}}
 \newcommand{\position}[1]{\renewcommand{\@position}{#1}}
 
-\newcommand{\pgline}{\noindent\makebox[\linewidth]{\rule{\textwidth}{0.5pt}}\newline}
+\newcommand{\pgline}{\vspace{-0.1em}\noindent\makebox[\linewidth]{\rule{\textwidth}{0.5pt}}\newline\vspace{-0.1em}}
+% tried other ways
+%\newcommand{\pgline}{\vspace{-0.5em}\noindent\rule{\textwidth}{0.5pt}\\[-0.7em]\vspace{-0.5em}}
+%\newcommand{\pgline}{\hrulefill\newline}
 \newcommand{\pgspace}{\noindent\vspace{0.5em}}
 \newcommand{\piinfo}
 {
 \begin{flushright}
  \small
   % OMB No. 0925-0001 and 0925-0002 (Rev. 09/17 Approved Through  03/31/2020)
-  OMB No. 0925-0001 and 0925-0002 (Rev. 03/2020 Approved Through 02/28/2023)\vspace{0em}
+ % OMB No. 0925-0001 and 0925-0002 (Rev. 03/2020 Approved Through 02/28/2023)\vspace{0em}
+ OMB No. 0925-0001 and 0925-0002 (Rev. 10/2021 Approved Through 09/30/2024)\vspace{0em}\\
 \end{flushright}
 \pgline
 {\centering
 \textbf{BIOGRAPHICAL SKETCH}\\
 {\footnotesize
 Provide the following information for the Senior/key personnel and other significant contributors.\\
-Follow this format for each person.  \textbf{DO NOT EXCEED FIVE PAGES}.\\}}
+Follow this format for each person.  DO NOT EXCEED FIVE PAGES.\\}}
 \pgline
-\pgspace
 NAME: \@name\\
-\pgspace
+\pgline
 eRA COMMONS USER NAME (credential, e.g., agency login): \@eracommons\\
-\pgspace
+\pgline
 POSITION TITLE: \@position\\
-\pgspace
+\pgline
 EDUCATION/TRAINING (\textit{Begin with baccalaureate or other initial professional education, such as nursing, include postdoctoral training and residency training if applicable. Add/delete rows as necessary.})\\}
 
 \newcommand{\grantinfo}[6]
